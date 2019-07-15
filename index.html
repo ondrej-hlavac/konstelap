@@ -14,16 +14,33 @@
 
 <body>
 
-    <svg height="200" width="500">
-      <polyline id="polyline-test" points="20,20 40,25 60,40 80,120 120,140 200,180"
-      style="fill:none;stroke:black;stroke-width:3" />
-    </svg> 
+  <svg height="400" width="600">
+    <g id="C">
+      <path d="M235.505,232.265L115.282,232.265L115.282,390.012L233.703,390.012" style="fill:none;stroke:black;stroke-width:0.91px;">
+        <animate id="animation-to-check" begin="indefinite" stroke=”freeze” attributeName="d" dur="5s"
+        fill=”freeze” 
+        values="M235.505,232.265L115.282,202.265L115.282,320.012L233.703,390.012"/>
+      </path>
+    </g>
+  </svg> 
 
-  <!-- <script src="js/scripts.js"></script> -->
   <script type="text/javascript">
-    const polyline = document.getElementById('polyline-test');
-    console.log('haha');
-    polyline && console.log('polsy', polyline)
+
+    // read letter shape
+    // https://stackoverflow.com/questions/25706565/how-do-i-add-coordinates-to-an-svg-polyline
+    const svgShape = document.getElementById('C');
+    const shapePath = svgShape.getElementsByTagName('path');
+    const points = shapePath[0].getAttribute("d");
+    const pointsString = points.split(/(?=[LMC])/);
+
+    console.log('poly', pointsString);
+
+    // run animation on click
+    document.addEventListener('click', function() {
+      console.log('kliksem');
+      const animationToCheck = document.getElementById("animation-to-check");
+      animationToCheck.beginElement();
+    });
   </script>
 </body>
 </html>
