@@ -15,56 +15,38 @@
 <body>
 
   <svg height="400" width="600">
-
-    <g id="C">
-      <path 
-        d="M235.505,232.265L115.282,232.265L115.282,390.012L233.703,390.012" 
-        style="fill:none;stroke:black;stroke-width:0.91px;"
-      >
-        <animate 
-          id="animation-to-check" 
-          begin="infinite" 
-          stroke=”freeze” 
-          attributeName="d" 
-          dur="5s"
-          fill=”freeze” 
-          values="M235.505,232.265L115.282,202.265L115.282,320.012L233.703,390.012"
-        />
-        <!-- <animate 
-          id="animation-to-check" 
-          begin="indefinite" 
-          stroke=”freeze” 
-          attributeName="d" 
-          dur="5s"
-          fill=”freeze” 
-          values="M235.505,232.265L115.282,202.265L115.282,320.012L233.703,390.012"
-        /> -->
-      </path>
-    </g>
-
-    <g id="o">
-      <path
-        d="M123,123,123,123,123"
-        style="fill:none;stroke:black;stroke-width:0.91px;"
-      ></path>
-    </g>
+    <path 
+      id="letterC"
+      d="M235.505,232.265L115.282,232.265L115.282,390.012L233.703,390.012" 
+      style="fill:none;stroke:black;stroke-width:2px;"
+    >
+      <animate 
+        id="letterC_animation" 
+        begin="indefinite" 
+        stroke=”freeze” 
+        calcMode=”spline”
+        keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+        attributeName="d" 
+        dur="5s"
+        values="M235.505,232.265L115.282,202.265L115.282,320.012L233.703,390.012"
+      />
+    </path>
   </svg> 
 
   <script type="text/javascript">
-
     // read letter shape
     // https://stackoverflow.com/questions/25706565/how-do-i-add-coordinates-to-an-svg-polyline
-    const svgShape = document.getElementById('C');
-    const shapePath = svgShape.getElementsByTagName('path');
-    const points = shapePath[0].getAttribute("d");
-    const pointsString = points.split(/(?=[LMC])/);
-
-    console.log('poly', pointsString);
+    // const svgShape = document.getElementById('C');
+    // const shapePath = svgShape.getElementsByTagName('path');
+    // const points = shapePath[0].getAttribute("d");
+    // const pointsString = points && points.split(/(?=[LMC])/);
+    // console.log('poly', pointsString);
 
     // run animation on click
+    const animationToCheck = document.getElementById("letterC_animation");
+
     document.addEventListener('click', function() {
       console.log('kliksem');
-      const animationToCheck = document.getElementById("animation-to-check");
       animationToCheck.beginElement();
     });
   </script>
